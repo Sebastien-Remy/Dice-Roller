@@ -4,10 +4,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
-import android.widget.TextView
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
+
+    lateinit var diceImage: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -16,6 +17,8 @@ class MainActivity : AppCompatActivity() {
         val rollButton: Button = findViewById(R.id.roll_button)
         rollButton.text = "Let's Roll"
 
+        diceImage = findViewById(R.id.dice_image)
+
         rollButton.setOnClickListener {
             rollDice()
         }
@@ -23,7 +26,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun rollDice() {
         val randomInt = Random().nextInt(6) + 1
-        val diceImage: ImageView = findViewById(R.id.dice_image)
         val drawableResource = when (randomInt) {
             1 -> R.drawable.dice_1
             2 -> R.drawable.dice_2
